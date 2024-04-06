@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import Heading from "@/components/ui/header";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { DollarSign, Download, Pi, PiIcon, Plus } from "lucide-react";
+import {  LoaderIcon, Plus, WindIcon } from "lucide-react";
 import PowerForm from "./powerForm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import DownloadButton from "./downloadButton";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function PowerPrediction() {
   const data = [
@@ -17,26 +17,40 @@ export default function PowerPrediction() {
     ['Alice', 25, 'Canada'],
     ['Bob', 35, 'UK'],
   ];
+const [truth,setTruth]=useState(false);
+const [truth1,setTruth1]=useState(false);
+const handleClick = () => {
+  setTruth(true); 
+  setTimeout(() => {
+    setTruth(false);
+    setTruth1(true); 
+    toast.success("Report generated")
+  }, 2000); 
+};
+
 
 
 
   return (
-    <div className="h-full  m-2 mr-10">
-      <div className="flex items-center justify-between ">
+    <div className="h-full  min-h-screen  m-2 mr-10 ">
+      <div className="flex items-center justify-between mb-3 ">
         <Heading
-          title={`Power Prediction`}
-          description="Predict power generation with our trained Ml Model "
+          title={`Power Prediction Model`}
+          description="Predict power generation of your grid with our prediction Model "
         />
-        <Button className="">
+        <Button className="" onClick={handleClick}>
           <Plus className="mr-2 h-4 w-4" />Get Data
         </Button>
-
-
-
       </div>
-      <Separator />
-
-      <div className="mt-5 flex justify-center">
+      <Separator/>
+      {truth && 
+      <div className="flex justify-center  items-center h-[600px] top-0 absolute w-full ">
+      <LoaderIcon className="h-20 w-20 rotate flex justify-center items-center"/>
+      </div>
+}
+      {!truth && truth1 &&
+      <div>
+         <div className="mt-5 flex justify-center">
       <Card className="border-2 w-1/2">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-2xl font-bold">
@@ -45,7 +59,10 @@ export default function PowerPrediction() {
               <DownloadButton data={data}/>
             </CardHeader>
             <CardContent>
-              <div className=""><FontAwesomeIcon icon={faFilePdf} className="h-7"/></div>
+              <div className="flex">
+                <FontAwesomeIcon icon={faFilePdf} className="h-7"/>
+                <div className=" self-center ">3 months predicted data</div>
+                </div>
             </CardContent>
           </Card>
       </div>
@@ -64,18 +81,22 @@ export default function PowerPrediction() {
        </div>
         {/* Output */}
         
-        <Card className="border-2 w-[10rem] text-center">
+        <Card className="border border-zinc-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-2xl text-center font-bold">
-              90
+              <CardTitle className="text-sm font-medium">
+                Predicted Value of Power Generated
               </CardTitle>
             </CardHeader>
             <CardContent>
-              text
+              <div className="text-2xl font-bold">+45.24</div>
             </CardContent>
           </Card>
       </div>
+      </div>
      
+      }
+           <Separator/>
+
     </div>
   )
 }

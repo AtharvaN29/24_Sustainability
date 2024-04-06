@@ -8,7 +8,7 @@ const Heading:React.FC<HeadingProps>=({
 })=>{
     return(
         <div className="ml-5">
-            <h2 className="text-3xl font-bold tracking-tight mb-1  ">{title}</h2>
+            <h2 className="text-2xl font-bold tracking-tight mb-1  ">{title}</h2>
             <p className="text-md text-muted-foreground">
                 {description}
             </p>
