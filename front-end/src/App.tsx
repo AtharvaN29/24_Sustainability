@@ -1,17 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
-import { Button } from './components/ui/button'
-
+import Home from './mycomponents/Home'
+import PowerPrediction from './mycomponents/PowerPrediction'
+import Footer from './mycomponents/footer'
+import Navbar from './mycomponents/navbar'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
     <>
-     <Button>Hello</Button>
-     <div className='bg-red-500'>hello</div>
-    </>
+    <Router>
+      <Navbar  />
+      <Routes>
+      <Route exact path = '/home' element={<Home/>}/>
+        <Route exact path = '/powerPrediction' element={<PowerPrediction/>}/>
+        <Route exact path = '/analytics' element={<PowerPrediction/>}/>
+        <Route exact path = '/stabilityPrediction' element={<PowerPrediction/>}/>
+        <Route exact path = '/powerPrediction' element={<PowerPrediction/>}/>
+
+      </Routes>
+      <Footer/>
+
+    </Router>
+    </>  
   )
 }
 
