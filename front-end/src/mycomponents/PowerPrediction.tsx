@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/header";
 import { Separator } from "@/components/ui/separator";
-import {  LoaderIcon, Plus, WindIcon } from "lucide-react";
+import {  LoaderIcon, Plus } from "lucide-react";
 import PowerForm from "./powerForm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +17,8 @@ export default function PowerPrediction() {
     ['Alice', 25, 'Canada'],
     ['Bob', 35, 'UK'],
   ];
+  const[truths,settruths]=useState(false);
+  const[truthans,settruthans]=useState(false);
 const [truth,setTruth]=useState(false);
 const [truth1,setTruth1]=useState(false);
 const handleClick = () => {
@@ -76,6 +78,18 @@ const handleClick = () => {
             </CardHeader>
             <CardContent>
               <PowerForm/>
+              <Button className='rounded:md m-4 w-1/3  self-center flex justify-center items-center' onClick={()=>{
+                settruths(true);
+                setTimeout(() => {
+                    settruths(false);
+                    settruthans(true);
+                    toast.success("Statue generated successfully")
+                }, 1000);
+                settruthans(false)
+}
+ 
+  }>Submit</Button>
+
             </CardContent>
           </Card>
        </div>
@@ -88,7 +102,13 @@ const handleClick = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">+45.24</div>
+            <div className="text-2xl font-bold">{truths &&
+                    <div className="m-2" >
+                        <LoaderIcon className="h-10 w-10 ml-10 rotate flex justify-center items-center" />
+                    </div>
+                }
+                {truthans && <div>+45.46</div>}
+                </div>
             </CardContent>
           </Card>
       </div>

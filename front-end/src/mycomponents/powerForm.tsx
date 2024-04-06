@@ -10,7 +10,6 @@ export default function PowerForm() {
         <Input placeholder='Pressure Vaue ' className='w-auto m-5'></Input>
         <Input placeholder='Wind Speed' className='w-auto m-5' ></Input>
 
-        <Button className='rounded:md m-4 w-1/3  self-center flex justify-center items-center'>Submit</Button>
       </form>
     </div>
   )
