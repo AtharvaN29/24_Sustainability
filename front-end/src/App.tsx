@@ -1,16 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { Button } from './components/ui/button'
+import Lines from './graphs/Lines'
+import PieChart from './graphs/PieChart'
+import ThreeNode from './graphs/ThreeNode'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-     <Button>Hello</Button>
-     <div className='bg-red-500'>hello</div>
+      Hello World
+      {/* <ThreeNode /> */}
+      {/* <Lines /> */}
     </>
   )
 }
