@@ -1,6 +1,6 @@
 import { Tabs } from "@/components/ui/tabs";
 // import Image from "next/image";
-
+import A1 from '../assets/A1.jpeg'
 
 export default function Slides() {
   const tabs = [
@@ -37,6 +37,7 @@ export default function Slides() {
     {
       title: "Content",
       value: "content",
+      src:{A1},
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
           <p>Content tab</p>
@@ -66,7 +67,7 @@ export default function Slides() {
 const DummyContent = () => {
   return (
     <img
-      src="/linear.webp"
+      src={src}
       alt="dummy image"
       width="1000"
       height="1000"

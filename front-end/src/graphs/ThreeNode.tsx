@@ -11,7 +11,7 @@ export default function ThreeNode() {
   return (
     <div className='THREENODEGRAPH flex flex-col items-center'>
       <div
-        className='node1 border p-10 w-32 absolute shadow-[10px_40px_30px_rgb(0,0,0,0.12)] cursor-pointer'
+        className='node1 border p-10 w-32 absolute shadow-[10px_40px_30px_rgb(255,255,255,0.12)] cursor-pointer'
         style={{ borderRadius: '100px', zIndex: 1 }}
         onMouseEnter={() => {
           setNode1(false)
@@ -27,7 +27,7 @@ export default function ThreeNode() {
         )}
       </div>
       <div
-        className='node1 border p-10 w-32 absolute mt-80 mr-80 shadow-[10px_40px_30px_rgb(0,0,0,0.12)] cursor-pointer'
+        className='node1 border p-10 w-32 absolute mt-80 mr-80 shadow-[10px_40px_30px_rgb(255,255,255,0.12)] cursor-pointer'
         style={{ borderRadius: '100px', zIndex: 2 }}
         onMouseEnter={() => {
           setNode2(false)
@@ -43,14 +43,14 @@ export default function ThreeNode() {
         )}
       </div>
       <div
-        className='node1 border  p-10 w-32 absolute mt-48 shadow-[10px_40px_30px_rgb(0,0,0,0.12)]'
+        className='node1 border  p-10 w-32 absolute mt-48 shadow-[10px_40px_30px_rgb(255,255,255,0.12)]'
         style={{ borderRadius: '100px', zIndex: 3 }}
       >
         <FontAwesomeIcon icon={faFan} className='h-10 rotate' />
         {/* center node */}
       </div>
       <div
-        className='node1 border p-10 w-32 absolute mt-80 ml-80 shadow-[10px_40px_30px_rgb(0,0,0,0.12)] cursor-pointer'
+        className='node1 border p-10 w-32 absolute mt-80 ml-80 shadow-[10px_40px_30px_rgb(255,255,255,0.12)] cursor-pointer'
         style={{ borderRadius: '100px', zIndex: 4 }}
         onMouseEnter={() => {
           setNode3(false)
@@ -65,9 +65,9 @@ export default function ThreeNode() {
           <div className='h-11'>45% = {power * 0.45}kW </div>
         )}
       </div>
-      <div className='arrow1 absolute w-1 h-10 border border-black bg-black mt-[140px]'></div>
-      <div className='arrow1 absolute w-1 h-10 border border-black bg-black mt-[300px] mr-40 rotate-45'></div>
-      <div className='arrow1 absolute w-1 h-10 border border-black bg-black mt-[300px] ml-40 -rotate-45'></div>
+      <div className='arrow1 absolute w-1 h-10 border border-white bg-white mt-[140px]'></div>
+      <div className='arrow1 absolute w-1 h-10 border border-white bg-white mt-[300px] mr-40 rotate-45'></div>
+      <div className='arrow1 absolute w-1 h-10 border border-white bg-white mt-[300px] ml-40 -rotate-45'></div>
     </div>
   )
 }

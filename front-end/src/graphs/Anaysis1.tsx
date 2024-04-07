@@ -12,7 +12,7 @@ export default function Anaysis1() {
     exportEnabled: true,
     theme: 'light1', // "light1", "dark1", "dark2"
     title: {
-      text: 'Stability Graph ',
+      text: 'Unstability Graph ',
     },
     axisY: {
       title: 'Stability Rate',
