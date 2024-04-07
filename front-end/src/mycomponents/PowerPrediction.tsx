@@ -41,7 +41,9 @@ const data1={
   'windspeed':wind
 }
 const db=async()=>{
-const database=await fetch('http://127.0.0.1:5000/power',{
+
+try {
+  const database=await fetch('http://127.0.0.1:5000/power',{
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -50,15 +52,13 @@ const database=await fetch('http://127.0.0.1:5000/power',{
 )
 response=await database.json();
 response=response.result[0].toString();
-setAtharva(response);
-if(database){
-  toast.success("Value fetched");
+toast.success("Value fetched");
    console.log(response);
+setAtharva(response);
+} catch (error) {
+  toast.error("Error failed to fetch data");
+}
 
-}
-else{
-  toast.error("Error");
-}
 
 }
 const hardik=(url:string)=>{
@@ -123,7 +123,6 @@ const hardik=(url:string)=>{
                 setTimeout(() => {
                     settruths(false);
                     settruthans(true);
-                    toast.success("Statue generated successfully")
                 }, 1000);
                 settruthans(false);
                 db();

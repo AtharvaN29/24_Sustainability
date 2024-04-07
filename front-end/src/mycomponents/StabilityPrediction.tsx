@@ -31,7 +31,7 @@ export default function StabilityPrediction() {
         ['Alice', 25, 'Canada'],
         ['Bob', 35, 'UK'],
     ];
-
+    const [ans,setAns]=useState('');
     const [truth, setTruth] = useState(false);
     const [truth1, setTruth1] = useState(true);
     const handleClick = () => {
@@ -42,6 +42,26 @@ export default function StabilityPrediction() {
             toast.success("Report generated successfully")
         }, 2000);
     };
+    const handleRandom = () => {
+        // Randomly select 'stable' or 'unstable'
+        
+                    if(!date){
+                        toast.error("Please specify Date");
+                        return;
+                    }
+                    
+                    settruths(true);
+                setTimeout(() => {
+                    settruths(false);
+                    settruthans(true);
+                    toast.success("Status generated successfully")
+
+                }, 1000);
+                settruthans(false)
+        const randomValue = date?.getDay()%10 > 1.5 ? 'Stable' : 'Unstable';
+        setAns(randomValue);
+      };
+    
     return (
         <div className=" min-h-screen m-2">
             <div className="flex items-center justify-between mb-3 ">
@@ -129,13 +149,8 @@ export default function StabilityPrediction() {
             {/* Date */}
             <div className="flex justify-evenly items-center">
             <Button onClick={()=>{
-                settruths(true);
-                setTimeout(() => {
-                    settruths(false);
-                    settruthans(true);
-                    toast.success("Statue generated successfully")
-                }, 1000);
-                settruthans(false)
+                
+                handleRandom();
                
                 }}>Predict Stability</Button>
             <Card className=" border border-zinc-600 w-1/2">
@@ -150,7 +165,7 @@ export default function StabilityPrediction() {
                         <LoaderIcon className="h-10 w-10 ml-10 rotate flex justify-center items-center" />
                     </div>
                 }
-                {truthans && <div>Stable</div>}
+                {(truthans &&  date) && <div>{ans}</div>}
                 </div>
             </CardContent>
           </Card>
