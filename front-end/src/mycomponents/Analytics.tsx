@@ -34,7 +34,6 @@ export default function Analytics() {
         
       </div>
 
-      <div><Overview data={data}/></div>
 
       <div className='mt-10 mb-[500px]'>
         <CardContent className='flex flex-col justify-evenly'>

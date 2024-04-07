@@ -1,4 +1,3 @@
-import Anaysis1 from '@/graphs/Anaysis1'
 import Slides from '../mycomponents/Slides'
 import Tools from '../assets//Tools.jpg'
 export default function Home() {
