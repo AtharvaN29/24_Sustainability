@@ -1,4 +1,3 @@
-import HomePage from '../assets/HomePage.png'
 import Slides from '../mycomponents/Slides'
 export default function Home() {
   return (

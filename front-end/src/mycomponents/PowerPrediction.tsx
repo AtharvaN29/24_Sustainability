@@ -2,21 +2,25 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/header";
 import { Separator } from "@/components/ui/separator";
 import {  LoaderIcon, Plus } from "lucide-react";
-import PowerForm from "./powerForm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import DownloadButton from "./downloadButton";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { Input } from "@/components/ui/input";
 
-export default function PowerPrediction() {
+export default  function PowerPrediction() {
   const data = [
     ['Name', 'Age', 'Country'],
     ['John', 30, 'USA'],
     ['Alice', 25, 'Canada'],
     ['Bob', 35, 'UK'],
   ];
+  const[temp,setTemp]=useState('');
+  const[pressure,setPressure]=useState('');
+  const[atharva,setAtharva]=useState('');
+  const[wind,setwind]=useState('');
   const[truths,settruths]=useState(false);
   const[truthans,settruthans]=useState(false);
 const [truth,setTruth]=useState(false);
@@ -31,8 +35,33 @@ const handleClick = () => {
 };
 
 
+let response;
+const data1={
+  'air':temp,
+  'pressure':pressure,
+  'windspeed':wind
+}
+const db=async()=>{
+const database=await fetch('http://127.0.0.1:5000/power',{
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data1)}
+)
+response=await database.json();
+response=response.result[0].toString();
+setAtharva(response);
+if(database){
+  toast.success("Value fetched");
+   console.log(response);
 
+}
+else{
+  toast.error("Error");
+}
 
+}
   return (
     <div className="h-full  min-h-screen  m-2 mr-10 ">
       <div className="flex items-center justify-between mb-3 ">
@@ -77,18 +106,26 @@ const handleClick = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <PowerForm/>
-              <Button className='rounded:md m-4 w-1/3  self-center flex justify-center items-center' onClick={()=>{
+            <div className=''>
+      <form className=' flex flex-col' onSubmit={(e)=>{e.preventDefault()}}>
+        <Input placeholder='Temprature Value' className='w-auto m-5' onChange={(e)=>{setTemp(e.target.value)}}></Input>
+        <Input placeholder='Pressure Vaue ' className='w-auto m-5' onChange={(e)=>{setPressure(e.target.value)}}></Input>
+        <Input placeholder='Wind Speed' className='w-auto m-5' onChange={(e)=>{setwind(e.target.value)}}></Input>
+        <Button className='rounded:md m-4 w-1/3  self-center flex justify-center items-center' onClick={()=>{
                 settruths(true);
                 setTimeout(() => {
                     settruths(false);
                     settruthans(true);
                     toast.success("Statue generated successfully")
                 }, 1000);
-                settruthans(false)
+                settruthans(false);
+                db();
 }
  
   }>Submit</Button>
+      </form>
+    </div>
+
 
             </CardContent>
           </Card>
@@ -107,11 +144,13 @@ const handleClick = () => {
                         <LoaderIcon className="h-10 w-10 ml-10 rotate flex justify-center items-center" />
                     </div>
                 }
-                {truthans && <div>+45.46</div>}
+                
+                {truthans && <span>{atharva}</span>}
                 </div>
             </CardContent>
           </Card>
       </div>
+      {response}
       </div>
      
       }
