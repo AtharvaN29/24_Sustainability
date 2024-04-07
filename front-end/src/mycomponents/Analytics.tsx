@@ -5,8 +5,6 @@ import { Separator } from '@radix-ui/react-separator'
 import Anaysis1 from '../graphs/Anaysis1'
 
 export default function Analytics() {
-  
-
   return (
     <div className=''>
       <div className='flex items-center justify-center'>
@@ -31,11 +29,9 @@ export default function Analytics() {
             <Anaysis1 />
           </CardContent>
         </Card>
-        
       </div>
 
-
-      <div className='mt-10 mb-[500px]'>
+      <div className='mt-10 p-10 mb-[500px] border border-white w-[500px] h-[560px] rounded-xl ml-[425px]'>
         <CardContent className='flex flex-col justify-evenly'>
           <ThreeNode />
         </CardContent>
