@@ -7,11 +7,15 @@ export default function Home() {
     //   HOme Page
     // </div>
     <div className='bg-black'>
-    <div className='text-4xl font-serif pt-10  pb-2 text-center bg-black'>Analyse anywhere!</div>
-    <div className='text-2xl  text-center'>Use our grid analysis model for predicting </div>
+      <div className='text-4xl font-serif pt-10  pb-2 text-center bg-black'>
+        Analyse anywhere!
+      </div>
+      <div className='text-2xl  text-center'>
+        Use our grid analysis model for predicting{' '}
+      </div>
 
-      <img src={Tools} alt="" className='mt-10'/>
-      <Slides/>
+      <img src={Tools} alt='' className='mt-10' />
+      <Slides />
     </div>
   )
 }
