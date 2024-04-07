@@ -1,4 +1,6 @@
-import {TabsDemo} from '../mycomponents/Slides'
+
+import Anaysis1 from '@/graphs/Anaysis1'
+import { TabsDemo } from '../mycomponents/Slides'
 import Tools from '../assets//Tools.jpg'
 export default function Home() {
   return (
@@ -7,21 +9,17 @@ export default function Home() {
     //   HOme Page
     // </div>
     <>
-    <div className='bg-black flex flex-col justify-center items-center'>
-      <div>
-      <div className='text-4xl font-serif pt-10  pb-2 text-center bg-black'>Analyse anywhere!</div>
-    <div className='text-2xl  text-center'>Use our grid analysis model for predicting </div>
+      <div className='bg-black'>
+        <div className='text-4xl font-serif pt-10  pb-2 text-center bg-black'>
+          Analyse anywhere!
+        </div>
+        <div className='text-2xl  text-center'>
+          Use our grid analysis model for predicting{' '}
+        </div>
+
+        <img src={Tools} alt='' className='mt-10' />
+        <TabsDemo />
       </div>
-      <div>
-      <img src={Tools} alt="" className='mt-10 h-[500px]'/>
-      </div>
-
-      <TabsDemo/>
-
-
-    </div>
-    
     </>
-    
   )
 }

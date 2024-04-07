@@ -7,7 +7,7 @@ export default function PieChart() {
   const options = {
     animationEnabled: true,
     exportEnabled: true,
-    theme: 'light1', // "light1", "dark1", "dark2"
+    theme: 'dark2', // "light1", "dark1", "dark2"
     title: {
       text: 'Stability',
     },
@@ -17,8 +17,8 @@ export default function PieChart() {
         indexLabel: '{label}: {y}%',
         startAngle: -90,
         dataPoints: [
-          { y: 70, label: 'Stable' },
-          { y: 30, label: 'Unstable' },
+          { y: 36, label: 'Stable' },
+          { y: 64, label: 'Unstable' },
         ],
       },
     ],

@@ -10,7 +10,7 @@ export default function Anaysis1() {
   const options = {
     animationEnabled: true,
     exportEnabled: true,
-    theme: 'light1', // "light1", "dark1", "dark2"
+    theme: 'dark1', // "light1", "dark1", "dark2"
     title: {
       text: 'Unstability Graph ',
     },

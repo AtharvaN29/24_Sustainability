@@ -1,29 +1,29 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Heading from "@/components/ui/header";
-import { Separator } from "@/components/ui/separator";
-import { LoaderIcon } from "lucide-react";
-import { useState } from "react";
-import DownloadButton from "./downloadButton";
-import { faFilePdf, faL } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import toast from "react-hot-toast";
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import Heading from '@/components/ui/header'
+import { Separator } from '@/components/ui/separator'
+import { Download, LoaderIcon } from 'lucide-react'
+import { useState } from 'react'
+import DownloadButton from './downloadButton'
+import { faFilePdf, faL } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import toast from 'react-hot-toast'
 
-import * as React from "react"
-import { format } from "date-fns"
-import { Calendar as CalendarIcon } from "lucide-react"
+import * as React from 'react'
+import { format } from 'date-fns'
+import { Calendar as CalendarIcon } from 'lucide-react'
 
-import { cn } from "@/lib/utils"
-import { Calendar } from "@/components/ui/calendar"
+import { cn } from '@/lib/utils'
+import { Calendar } from '@/components/ui/calendar'
 import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 export default function StabilityPrediction() {
-    const [date, setDate] = React.useState<Date>()
-    const[truths,settruths]=React.useState(false);
-    const[truthans,settruthans]=React.useState(false);
+  const [date, setDate] = React.useState<Date>()
+  const [truths, settruths] = React.useState(false)
+  const [truthans, settruthans] = React.useState(false)
 
     const data = [
         ['Name', 'Age', 'Country'],
@@ -62,6 +62,15 @@ export default function StabilityPrediction() {
         setAns(randomValue);
       };
     
+      
+      const hardik = (url: string) => {
+        const aTag = document.createElement('a')
+        aTag.href = url
+        aTag.setAttribute('download', 'stabilityreport')
+        document.body.appendChild(aTag)
+        aTag.click()
+        aTag.remove()
+      }
     return (
         <div className=" min-h-screen m-2">
             <div className="flex items-center justify-between mb-3 ">
@@ -99,7 +108,11 @@ export default function StabilityPrediction() {
                             <CardTitle className="text-2xl font-bold">
                                 Predicted Stability Data
                             </CardTitle>
-                            <DownloadButton data={data} />
+                            <Button
+                             onClick={() => {
+                                hardik('http://localhost:5173/new_stable_data.csv')
+                              }}
+                            ><Download className='h-4 w-5'/></Button>
                         </CardHeader>
                         <CardContent>
                             <div className="flex">
@@ -169,11 +182,10 @@ export default function StabilityPrediction() {
                 </div>
             </CardContent>
           </Card>
-            </div>
-           
-                </div>
-           <Separator/>
-           <Separator/>          
         </div>
-    )
+      </div>
+      <Separator />
+      <Separator />
+    </div>
+  )
 }
