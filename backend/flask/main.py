@@ -17,7 +17,7 @@ warnings.filterwarnings('ignore')
 
 import pandas as pd
 
-df=pd.read_csv('5_yrs_data_of_wind.csv')
+df=pd.read_csv('5_yrs_data_of_wind1.csv')
 new_df=pd.read_csv('train.csv')
 
 X = df.iloc[:,1:4]
@@ -35,6 +35,9 @@ print("done")
 
 from sklearn.metrics import mean_squared_error, r2_score
  
+y_pred=regressor.predict(new_X)
+new_df['predicted']=y_pred
+new_df.to_csv('new_train.csv', index=False)
 # Access the OOB Score
 # oob_score = regressor.oob_score_
 # print(f'Out-of-Bag Score: {oob_score}')
@@ -75,6 +78,18 @@ def powerCalc():
     new_c=pd.DataFrame([new_c])
     y_pred=regressor.predict(new_c)
     return jsonify(result=y_pred.tolist())
+
+
+# @app.route('/csv',methods=['GET'])
+# def csvmaker():
+#     y_pred=regressor.predict(new_X)
+#     new_df['predicted']=y_pred
+#     new_df.to_csv('new_train.csv', index=False)
+#     return
+
+
+
+
 
 
 
