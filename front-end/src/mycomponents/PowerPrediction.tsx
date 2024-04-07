@@ -5,7 +5,6 @@ import {  LoaderIcon, Plus } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
-import DownloadButton from "./downloadButton";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
@@ -62,6 +61,14 @@ else{
 }
 
 }
+const hardik=(url:string)=>{
+  const aTag=document.createElement('a');
+  aTag.href=url;
+  aTag.setAttribute('download',"report");
+  document.body.appendChild(aTag);
+  aTag.click();
+  aTag.remove();
+}
   return (
     <div className="h-full  min-h-screen  m-2 mr-10 ">
       <div className="flex items-center justify-between mb-3 ">
@@ -87,7 +94,7 @@ else{
               <CardTitle className="text-2xl font-bold">
               Predicted Power Consumption
               </CardTitle>
-              <DownloadButton data={data}/>
+              <Button onClick={()=>{hardik("http://localhost:5173/new_train.csv")}}>download</Button>
             </CardHeader>
             <CardContent>
               <div className="flex">
