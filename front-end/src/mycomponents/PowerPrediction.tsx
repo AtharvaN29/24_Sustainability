@@ -186,7 +186,7 @@
                         </div>
                       )}
     
-                      {truthans && <span>{atharva}</span>}
+                      {truthans && <span>+{atharva}   MW</span>}
                     </div>
                   </CardContent>
                 </Card>
