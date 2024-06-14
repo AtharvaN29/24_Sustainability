@@ -14,7 +14,7 @@ export default function Home() {
           Analyse anywhere!
         </div>
         <div className='text-2xl  text-center'>
-          Use our grid analysis model for predicting{' '}
+          Use our grid analysis model for predicting power generation and grid stability
         </div>
 
         <img src={Tools} alt='' className='mt-10' />

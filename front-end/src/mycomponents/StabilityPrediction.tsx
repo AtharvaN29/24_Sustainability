@@ -4,8 +4,7 @@ import Heading from '@/components/ui/header'
 import { Separator } from '@/components/ui/separator'
 import { Download, LoaderIcon } from 'lucide-react'
 import { useState } from 'react'
-import DownloadButton from './downloadButton'
-import { faFilePdf, faL } from '@fortawesome/free-solid-svg-icons'
+import { faFileExcel, faL } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import toast from 'react-hot-toast'
 
@@ -25,12 +24,6 @@ export default function StabilityPrediction() {
   const [truths, settruths] = React.useState(false)
   const [truthans, settruthans] = React.useState(false)
 
-    const data = [
-        ['Name', 'Age', 'Country'],
-        ['John', 30, 'USA'],
-        ['Alice', 25, 'Canada'],
-        ['Bob', 35, 'UK'],
-    ];
     const [ans,setAns]=useState('');
     const [truth, setTruth] = useState(false);
     const [truth1, setTruth1] = useState(true);
@@ -58,8 +51,9 @@ export default function StabilityPrediction() {
 
                 }, 1000);
                 settruthans(false)
-        const randomValue = date?.getDay()%10 > 1.5 ? 'Stable' : 'Unstable';
+        const randomValue = date?.getDay()%10 > 4 ? 'Stable' : 'Unstable';
         setAns(randomValue);
+        console.log(date.getDay());
       };
     
       
@@ -116,8 +110,8 @@ export default function StabilityPrediction() {
                         </CardHeader>
                         <CardContent>
                             <div className="flex">
-                                <FontAwesomeIcon icon={faFilePdf} className="h-7" />
-                                <div className=" self-center ">3 months predicted data</div>
+                            <FontAwesomeIcon icon={faFileExcel} className='h-7' />
+                      <div className=' self-center pl-3'>3 months predicted data</div>
                             </div>
                         </CardContent>
                     </Card>

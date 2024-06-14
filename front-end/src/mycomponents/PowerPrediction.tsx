@@ -5,7 +5,7 @@
     import { Download, LoaderIcon, Plus } from 'lucide-react'
     import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-    import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
+    import { faFileExcel } from '@fortawesome/free-solid-svg-icons'
     import { useState } from 'react'
     import toast from 'react-hot-toast'
     import { Input } from '@/components/ui/input'
@@ -108,8 +108,8 @@
                   </CardHeader>
                   <CardContent>
                     <div className='flex'>
-                      <FontAwesomeIcon icon={faFilePdf} className='h-7' />
-                      <div className=' self-center '>3 months predicted data</div>
+                      <FontAwesomeIcon icon={faFileExcel} className='h-7' />
+                      <div className=' self-center pl-3'>3 months predicted data</div>
                     </div>
                   </CardContent>
                 </Card>
